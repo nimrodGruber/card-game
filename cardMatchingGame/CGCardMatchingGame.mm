@@ -29,7 +29,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
 - (void)chooseCardAtIndex:(NSUInteger)index {
   CGCard *card = [self cardAtIndex:index];
   
-  [self flipAndClearPickedCardsIfNeeded];
+  [self flipAndClearPickedCardsIfNeeded:card];
 
   if (!card.matched) {
     if (card.chosen) {
@@ -40,11 +40,8 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
       [self logAddChosenCard:card];
       
       card.chosen = YES;
-      [self.pickedCards addObject:card];
 
-//      if (self.pickedCards.count == self.matchMode) {
-//        int matchScore = [card match:self.pickedCards matchMethod:self.matchMode];
-      if (self.pickedCards.count == self.matchMode) {
+      if (self.pickedCards.count == self.matchMode - 1) {
         int matchScore = 0;
         
         if (self.matchMode == 2) {
@@ -55,23 +52,25 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
       
         if (matchScore) {
           self.score += matchScore * kMatchBonus;
-          [self logPresentMatchScore:(matchScore * kMatchBonus) success:YES];
-          [self markCardsMatchedSign:self.pickedCards sign:YES];
+          [self logPresentMatchScore:card points:(matchScore * kMatchBonus) success:YES];
+          [self markCardsMatchedSign:card cards:self.pickedCards sign:YES];
         } else {
           self.score -= kMismatchPenalty;
-          [self logPresentMatchScore:(kMismatchPenalty + kCostToChoose) success:NO];
+          [self logPresentMatchScore:card points:(kMismatchPenalty + kCostToChoose) success:NO];
         }
       }
+      
+      [self.pickedCards addObject:card];
       
       self.score -= kCostToChoose;
     }
   }
 }
 
-- (void)flipAndClearPickedCardsIfNeeded {
+- (void)flipAndClearPickedCardsIfNeeded:(CGCard *)card {
   if (self.pickedCards.count == self.matchMode) {
     if ([self.pickedCards firstObject].matched == NO) {
-      [self markCardsChosenSign:self.pickedCards sign:NO];
+      [self markCardsChosenSign:card cards:self.pickedCards sign:NO];
     }
     [self.pickedCards removeAllObjects];
   }
@@ -98,16 +97,20 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   return self;
 }
 
-- (void)markCardsChosenSign:(NSMutableArray *)cards sign:(BOOL)sign {
-  for (CGCard *card in cards) {
-    card.chosen = sign;
+- (void)markCardsChosenSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
+  for (CGCard *picked in cards) {
+    picked.chosen = sign;
   }
+  
+  card.chosen = sign;
 }
 
-- (void)markCardsMatchedSign:(NSMutableArray *)cards sign:(BOOL)sign {
-  for (CGCard *card in cards) {
-    card.matched = sign;
+- (void)markCardsMatchedSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
+  for (CGCard *picked in cards) {
+    picked.matched = sign;
   }
+  
+  card.matched = sign;
 }
 
 - (void)logRemoveUnchosenCard:(CGCard *)card {
@@ -122,12 +125,14 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
 }
 
-- (void)logPresentMatchScore:(NSUInteger)points success:(BOOL)success {
+- (void)logPresentMatchScore:(CGCard *)card points:(NSUInteger)points success:(BOOL)success {
   [self.log setString: @""];
   
   for (CGCard *pCard in self.pickedCards) {
     [self.log appendString:[NSString stringWithFormat:@"%@", pCard.contents]];
   }
+  
+  [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
   
   if (success) {
     [self.log appendString:[NSString stringWithFormat:@" matched for %lu points", (unsigned long)points]];

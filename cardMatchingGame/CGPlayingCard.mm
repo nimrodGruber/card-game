@@ -32,19 +32,13 @@ static const int kThreeMatchBonus = 10;
   int score = 0;
   int matchCount =0;
   
-  for (NSUInteger j = 0; j < otherCards.count; ++j) {
-    CGPlayingCard *card = [otherCards objectAtIndex:j];
-    
-    for (NSUInteger i = 1 + j; i < otherCards.count; ++i) {
-      CGPlayingCard *otherCard = [otherCards objectAtIndex:i];
-      
-      if (card.rank == otherCard.rank) {
-        score += kRankMatchScore;
-        matchCount += 1;
-      } else if ([card.suit isEqualToString:otherCard.suit]) {
-        score += kSuitMatchScore;
-        matchCount += 1;
-      }
+  for (CGPlayingCard *card in otherCards) {
+    if (self.rank == card.rank) {
+      score += kRankMatchScore;
+      matchCount += 1;
+    } else if ([self.suit isEqualToString:card.suit]) {
+      score += kSuitMatchScore;
+      matchCount += 1;
     }
   }
   
@@ -54,23 +48,28 @@ static const int kThreeMatchBonus = 10;
 - (int)matchThreeCards:(NSMutableArray *)otherCards {
   int score = 0;
   int matchCount =0;
-
-  for (NSUInteger j = 0; j < otherCards.count; ++j) {
-    CGPlayingCard *card = [otherCards objectAtIndex:j];
-
-    for (NSUInteger i = 1 + j; i < otherCards.count; ++i) {
-      CGPlayingCard *otherCard = [otherCards objectAtIndex:i];
-
-      if (card.rank == otherCard.rank) {
-        score += kRankMatchScore;
-        matchCount += 1;
-      } else if ([card.suit isEqualToString:otherCard.suit]) {
-        score += kSuitMatchScore;
-        matchCount += 1;
-      }
+  
+  for (CGPlayingCard *card in otherCards) {
+    if (self.rank == card.rank) {
+      score += kRankMatchScore;
+      matchCount += 1;
+    } else if ([self.suit isEqualToString:card.suit]) {
+      score += kSuitMatchScore;
+      matchCount += 1;
     }
   }
-
+  
+  CGPlayingCard *first = [otherCards firstObject];
+  CGPlayingCard *second = [otherCards lastObject];
+  
+  if (first.rank == second.rank) {
+    score += kRankMatchScore;
+    matchCount += 1;
+  } else if ([first.suit isEqualToString:second.suit]) {
+    score += kSuitMatchScore;
+    matchCount += 1;
+  }
+  
   if (matchCount == 3) {
     score *= kThreeMatchBonus;
   }
