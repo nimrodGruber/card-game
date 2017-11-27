@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addCard:(CGCard *)card atTop:(BOOL)atTop {
     if (atTop) {
-        [self.cards insertObject:card atIndex:0];
+        [self.cards insertObject:card atIndex:0]; // yey2
     } else {
         [self.cards addObject:card];// yey
     }
