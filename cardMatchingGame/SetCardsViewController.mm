@@ -2,7 +2,6 @@
 // Created by nimrod gruber.
 
 #import "CGPlayingCardDeck.h"
-
 #import "SetCardsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -11,6 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGDeck *)createDeck {
   return [[CGPlayingCardDeck alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillDisappear:animated];
 }
 
 @end

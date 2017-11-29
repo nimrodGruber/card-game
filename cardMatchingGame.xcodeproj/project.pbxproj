@@ -17,6 +17,7 @@
 		F71FB3A61FC1C71F009C7874 /* cardMatchingGameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71FB3A51FC1C71F009C7874 /* cardMatchingGameUITests.m */; };
 		F76A87581FCE87FD00B15818 /* MatchingCardsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87561FCE87FD00B15818 /* MatchingCardsViewController.mm */; };
 		F76A875B1FCE95C000B15818 /* SetCardsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87591FCE95C000B15818 /* SetCardsViewController.mm */; };
+		F76A87611FCEE76500B15818 /* CGSetCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A875F1FCEE76500B15818 /* CGSetCard.mm */; };
 		F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C8F1FC2B23500D277B0 /* CGCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C931FC2BA3300D277B0 /* CGDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C921FC2BA3200D277B0 /* CGDeck.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C991FC2FA4B00D277B0 /* CGPlayingCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
@@ -63,6 +64,8 @@
 		F76A87571FCE87FD00B15818 /* MatchingCardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingCardsViewController.h; sourceTree = "<group>"; };
 		F76A87591FCE95C000B15818 /* SetCardsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SetCardsViewController.mm; sourceTree = "<group>"; };
 		F76A875A1FCE95C000B15818 /* SetCardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardsViewController.h; sourceTree = "<group>"; };
+		F76A875F1FCEE76500B15818 /* CGSetCard.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CGSetCard.mm; sourceTree = "<group>"; };
+		F76A87601FCEE76500B15818 /* CGSetCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGSetCard.h; sourceTree = "<group>"; };
 		F78B2C8E1FC2B23500D277B0 /* CGCard.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = CGCard.h; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C8F1FC2B23500D277B0 /* CGCard.mm */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = CGCard.mm; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C911FC2BA3200D277B0 /* CGDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGDeck.h; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				F78B2C921FC2BA3200D277B0 /* CGDeck.mm */,
 				F78B2C981FC2FA4B00D277B0 /* CGPlayingCard.h */,
 				F78B2C991FC2FA4B00D277B0 /* CGPlayingCard.mm */,
+				F76A87601FCEE76500B15818 /* CGSetCard.h */,
+				F76A875F1FCEE76500B15818 /* CGSetCard.mm */,
 				F78B2C9B1FC3057F00D277B0 /* CGPlayingCardDeck.h */,
 				F78B2C9C1FC3057F00D277B0 /* CGPlayingCardDeck.mm */,
 				F78B2C9F1FC4610500D277B0 /* CGCardMatchingGame.h */,
@@ -340,6 +345,7 @@
 			files = (
 				F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */,
 				F71FB3861FC1C71F009C7874 /* ViewController.m in Sources */,
+				F76A87611FCEE76500B15818 /* CGSetCard.mm in Sources */,
 				F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */,
 				F71FB3911FC1C71F009C7874 /* main.m in Sources */,
 				F76A87581FCE87FD00B15818 /* MatchingCardsViewController.mm in Sources */,
