@@ -32,13 +32,16 @@ static const int kThreeMatchBonus = 10;
   int score = 0;
   int matchCount =0;
   
-  for (CGPlayingCard *card in otherCards) {
-    if (self.rank == card.rank) {
-      score += kRankMatchScore;
-      matchCount += 1;
-    } else if ([self.suit isEqualToString:card.suit]) {
-      score += kSuitMatchScore;
-      matchCount += 1;
+  id card = [otherCards firstObject];
+  if ([card isKindOfClass:[CGPlayingCard class]]) {
+    for (CGPlayingCard *card in otherCards) {
+      if (self.rank == card.rank) {
+        score += kRankMatchScore;
+        matchCount += 1;
+      } else if ([self.suit isEqualToString:card.suit]) {
+        score += kSuitMatchScore;
+        matchCount += 1;
+      }
     }
   }
   

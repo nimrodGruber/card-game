@@ -15,6 +15,8 @@
 		F71FB3911FC1C71F009C7874 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F71FB3901FC1C71F009C7874 /* main.m */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F71FB39B1FC1C71F009C7874 /* cardMatchingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71FB39A1FC1C71F009C7874 /* cardMatchingGameTests.m */; };
 		F71FB3A61FC1C71F009C7874 /* cardMatchingGameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71FB3A51FC1C71F009C7874 /* cardMatchingGameUITests.m */; };
+		F76A87581FCE87FD00B15818 /* MatchingCardsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87561FCE87FD00B15818 /* MatchingCardsViewController.mm */; };
+		F76A875B1FCE95C000B15818 /* SetCardsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87591FCE95C000B15818 /* SetCardsViewController.mm */; };
 		F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C8F1FC2B23500D277B0 /* CGCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C931FC2BA3300D277B0 /* CGDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C921FC2BA3200D277B0 /* CGDeck.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C991FC2FA4B00D277B0 /* CGPlayingCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
@@ -57,6 +59,10 @@
 		F71FB3A11FC1C71F009C7874 /* cardMatchingGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cardMatchingGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71FB3A51FC1C71F009C7874 /* cardMatchingGameUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cardMatchingGameUITests.m; sourceTree = "<group>"; };
 		F71FB3A71FC1C71F009C7874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F76A87561FCE87FD00B15818 /* MatchingCardsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MatchingCardsViewController.mm; sourceTree = "<group>"; };
+		F76A87571FCE87FD00B15818 /* MatchingCardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingCardsViewController.h; sourceTree = "<group>"; };
+		F76A87591FCE95C000B15818 /* SetCardsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SetCardsViewController.mm; sourceTree = "<group>"; };
+		F76A875A1FCE95C000B15818 /* SetCardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardsViewController.h; sourceTree = "<group>"; };
 		F78B2C8E1FC2B23500D277B0 /* CGCard.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = CGCard.h; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C8F1FC2B23500D277B0 /* CGCard.mm */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = CGCard.mm; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C911FC2BA3200D277B0 /* CGDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGDeck.h; sourceTree = "<group>"; };
@@ -132,6 +138,10 @@
 				F78B2CA01FC4610500D277B0 /* CGCardMatchingGame.mm */,
 				F71FB3841FC1C71F009C7874 /* ViewController.h */,
 				F71FB3851FC1C71F009C7874 /* ViewController.m */,
+				F76A87571FCE87FD00B15818 /* MatchingCardsViewController.h */,
+				F76A87561FCE87FD00B15818 /* MatchingCardsViewController.mm */,
+				F76A875A1FCE95C000B15818 /* SetCardsViewController.h */,
+				F76A87591FCE95C000B15818 /* SetCardsViewController.mm */,
 				F71FB3871FC1C71F009C7874 /* Main.storyboard */,
 				F71FB38F1FC1C71F009C7874 /* Info.plist */,
 				F71FB38A1FC1C71F009C7874 /* Assets.xcassets */,
@@ -332,6 +342,8 @@
 				F71FB3861FC1C71F009C7874 /* ViewController.m in Sources */,
 				F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */,
 				F71FB3911FC1C71F009C7874 /* main.m in Sources */,
+				F76A87581FCE87FD00B15818 /* MatchingCardsViewController.mm in Sources */,
+				F76A875B1FCE95C000B15818 /* SetCardsViewController.mm in Sources */,
 				F71FB3831FC1C71F009C7874 /* AppDelegate.m in Sources */,
 				F78B2C9D1FC3057F00D277B0 /* CGPlayingCardDeck.mm in Sources */,
 				F78B2CA11FC4610500D277B0 /* CGCardMatchingGame.mm in Sources */,

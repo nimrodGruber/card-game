@@ -7,7 +7,7 @@
 //
 
 #import "CGCardMatchingGame.h"
-#import "CGPlayingCardDeck.h"
+//#import "CGPlayingCardDeck.h"
 
 #import "ViewController.h"
 
@@ -27,8 +27,9 @@
   return [UIImage imageNamed:card.chosen ? @"cardFront" : @"cardBack"];
 }
 
-- (CGDeck *)createDeck {
-  return [[CGPlayingCardDeck alloc] init];
+- (CGDeck *)createDeck { // Abstract.
+  //return [[CGPlayingCardDeck alloc] init];
+  return nil;
 }
 
 - (CGCardMatchingGame *)game
