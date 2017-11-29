@@ -8,91 +8,88 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation CGSetCard
 
 
-//@synthesize suit = _suit;
-//
-//static const int kRankMatchScore = 4;
-//static const int kSuitMatchScore = 1;
-//static const int kThreeMatchBonus = 10;
-//
+@synthesize color = _color;
+@synthesize number = _number;
+@synthesize shading = _shading;
+@synthesize symbol = _symbol;
+
 //- (NSString *)contents {
 //  NSArray *rankStrings = [CGPlayingCard rankStrings];
 //
 //  return [rankStrings[static_cast<unsigned long long>(self.rank)] stringByAppendingString:self.suit];
 //}
-//
+
 - (instancetype)init {
   if (self = [super init]) {
-    _number = 0;
-    _symbol = @"?";
-    _shading = undefinedSymbol;
+    _number = undefinedNumber;
+    _symbol = undefinedSymbol;
+    _shading = undefinedShade;
     _color = undefinedColor;
   }
 
   return self;
 }
 
+- (int)matchThreeCards:(NSMutableArray *)otherCards {
 
-//- (int)matchThreeCards:(NSMutableArray *)otherCards {
-//  int score = 0;
-//  int matchCount =0;
-//
-//  for (CGPlayingCard *card in otherCards) {
-//    if (self.rank == card.rank) {
-//      score += kRankMatchScore;
-//      matchCount += 1;
-//    } else if ([self.suit isEqualToString:card.suit]) {
-//      score += kSuitMatchScore;
-//      matchCount += 1;
-//    }
-//  }
-//
-//  CGPlayingCard *first = [otherCards firstObject];
-//  CGPlayingCard *second = [otherCards lastObject];
-//
-//  if (first.rank == second.rank) {
-//    score += kRankMatchScore;
-//    matchCount += 1;
-//  } else if ([first.suit isEqualToString:second.suit]) {
-//    score += kSuitMatchScore;
-//    matchCount += 1;
-//  }
-//
-//  if (matchCount == 3) {
-//    score *= kThreeMatchBonus;
-//  }
-//
-//  return score;
-//}
-//
-//+ (NSUInteger)maxRank {
-//  return [[self rankStrings] count] -1;
-//}
-//
+  BOOL cardsAreLegalSet = NO;
+  
+  CGSetCard *first = [otherCards firstObject];
+  CGSetCard *second = [otherCards lastObject];
+  
+  if ( ((self.number == first.number == second.number) || (self.number != first.number != second.number)) &&
+       ((self.symbol == first.symbol == second.symbol) || (self.symbol != first.symbol != second.symbol)) &&
+       ((self.shading == first.shading == second.shading) || (self.shading != first.shading != second.shading)) &&
+       ((self.color == first.color == second.color) || (self.color != first.color != second.color)) ) {
+    cardsAreLegalSet = YES;
+  }
+
+  return cardsAreLegalSet;
+}
+
 //+ (NSArray *)rankStrings {
 //  return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];
 //}
-//
-//- (void)setRank:(NSUInteger)rank {
-//  if (rank <= [CGPlayingCard maxRank]) {
-//    _rank = rank;
-//  }
-//}
-//
-//- (void)setSuit:(NSString *)suit {
-//  if ([[CGPlayingCard validSuits] containsObject:suit]) {
-//    _suit = suit;
-//  }
-//}
-//
-//- (NSString *)suit {
-//  return _suit ? _suit : @"?";
-//}
-//
-//+ (NSArray *)validSuits {
-//  return @[@"♠️", @"♣️", @"♥️", @"♦️"];
-//}
 
+- (ColorType)color {
+  return ((_color < undefinedColor) && (_color >= 0)) ? _color : undefinedColor;
+}
 
+- (NumberType)number {
+  return ((_number < undefinedNumber) && (_number >= 0)) ? _number : undefinedNumber;
+}
+
+- (ShadeType)shading {
+  return ((_shading < undefinedShade) && (_shading >= 0)) ? _shading : undefinedShade;
+}
+
+- (SymbolType)symbol {
+  return ((_symbol < undefinedSymbol) && (_symbol >= 0)) ? _symbol : undefinedSymbol;
+}
+
+-(void)setColor:(ColorType)color {
+  if ((color < undefinedColor) && (color >= 0)) {
+    _color = color;
+  }
+}
+
+-(void)setNumber:(NumberType)number {
+  if ((number < undefinedNumber) && (number >= 0)) {
+    _number = number;
+  }
+}
+
+-(void)setShading:(ShadeType)shading {
+  if ((shading < undefinedShade) && (shading >= 0)) {
+    _shading = shading;
+  }
+}
+
+-(void)setSymbol:(SymbolType)symbol {
+  if ((symbol < undefinedSymbol) && (symbol >= 0)) {
+    _symbol = symbol;
+  }
+}
 
 @end
 

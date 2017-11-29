@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
   }
     
-    return self;
+  return self;
 }
 
 @end
