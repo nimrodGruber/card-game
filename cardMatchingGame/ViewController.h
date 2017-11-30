@@ -18,4 +18,5 @@
 
 - (NSString *)titleForCard:(CGCard *)card; // Abstract.
 
+
 @end

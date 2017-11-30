@@ -32,36 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
   return score;
 }
   
--(int)match:(NSArray *)otherCards matchMethod:(NSUInteger __unused)matchMethod {
-    int score = 0;
-    
-    for (CGCard *card in otherCards) {
-      if ([card.contents isEqualToString:self.contents]) {
-        score = 1;
-      }
-    }
-    return score;
-}
-
--(int)matchTwoCards:(NSArray *)otherCards {
-  int score = 0;
-  
-  for (CGCard *card in otherCards) {
-    if ([card.contents isEqualToString:self.contents]) {
-      score = 1;
-    }
-  }
+-(int)match:(NSArray __unused *)otherCards matchMethod:(NSUInteger __unused)matchMethod {
+  int score = 1;
+  // Empty.
   return score;
 }
 
--(int)matchThreeCards:(NSArray *)otherCards {
-  int score = 0;
-  
-  for (CGCard *card in otherCards) {
-    if ([card.contents isEqualToString:self.contents]) {
-      score = 1;
-    }
-  }
+-(int)matchTwoCards:(NSArray __unused *)otherCards {
+  int score = 1;
+  // Empty.
+  return score;
+}
+
+-(int)matchThreeCards:(NSArray __unused *)otherCards {
+  int score = 1;
+  // Empty.
   return score;
 }
 

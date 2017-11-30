@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
     CGSetCard *setCard = (CGSetCard *) card;
     NSMutableString *cardData = [[NSMutableString alloc] init];
     [cardData appendString:[self numberValue:setCard]];
+    [cardData appendString:[self symbolValue:setCard]];
     [cardData appendString:[self colorValue:setCard]];
     [cardData appendString:[self shadeValue:setCard]];
-    [cardData appendString:[self symbolValue:setCard]];
     return cardData;
   }
 }
@@ -59,11 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)symbolValue:(CGSetCard *)card {
   if (card.symbol == triangle) {
-    return @"🔺";
+    return @"🔼";
   } else if (card.symbol == circle) {
-    return @"🔵";
+    return @"⏺";
   } else { //card.symbol == squar
-    return @"◼️";
+    return @"⏹";
   }
 }
 
