@@ -23,8 +23,8 @@
 
 @implementation ViewController
 
-- (UIImage *)backGroundImageForCard:(CGCard *)card {
-  return [UIImage imageNamed:card.chosen ? @"cardFront" : @"cardBack"];
+- (UIImage *)backGroundImageForCard:(CGCard __unused *)card { // Abstract.
+  return nil;
 }
 
 - (CGDeck *)createDeck { // Abstract.

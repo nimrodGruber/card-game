@@ -67,6 +67,10 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
+- (UIImage *)backGroundImageForCard:(CGCard *)card {
+  return [UIImage imageNamed:@"cardFront"];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

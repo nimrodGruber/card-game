@@ -18,5 +18,6 @@
 
 - (NSString *)titleForCard:(CGCard *)card; // Abstract.
 
+- (UIImage *)backGroundImageForCard:(CGCard *)card; // Abstract.
 
 @end

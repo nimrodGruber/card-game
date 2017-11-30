@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
   return card.chosen ? card.contents : @"";
 }
 
+- (UIImage *)backGroundImageForCard:(CGCard *)card {
+
+  return [UIImage imageNamed:card.chosen ? @"cardFront" : @"cardBack"];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END
