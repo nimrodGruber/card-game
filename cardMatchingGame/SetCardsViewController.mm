@@ -1,20 +1,25 @@
 // Copyright (c) 2017 Lightricks. All rights reserved.
 // Created by nimrod gruber.
 
-#import "CGPlayingCardDeck.h"
+#import "CGSetDeck.h"
+//#import "CGPlayingCardDeck.h"
 #import "SetCardsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation SetCardsViewController
 
+//- (CGDeck *)createDeck {
+//  return [[CGPlayingCardDeck alloc] init];
+//}
+
 - (CGDeck *)createDeck {
-  return [[CGPlayingCardDeck alloc] init];
+  return [[CGSetDeck alloc] init];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillDisappear:animated];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//  [super viewWillAppear:animated];
+//}
 
 @end
 

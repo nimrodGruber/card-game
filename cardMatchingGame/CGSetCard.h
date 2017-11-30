@@ -14,7 +14,7 @@ typedef enum {
   undefinedColor
 } ColorType;
 
-typedef enum {
+typedef enum { //TODO - switch to simple ints
   one = 0,
   two = 1,
   three = 2,

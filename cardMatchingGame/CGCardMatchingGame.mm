@@ -21,6 +21,7 @@ static const int kMatchBonus = 4;
 static const int kCostToChoose = 1;
 static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
 
+//same as set game
 - (CGCard *)cardAtIndex:(NSUInteger)index
 {
   return (index <= self.cards.count) ? self.cards[index] : nil;
@@ -67,7 +68,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   }
 }
 
-//same as set
+//same as set game
 - (void)flipAndClearPickedCardsIfNeeded:(CGCard *)card {
   if (self.pickedCards.count == self.matchMode) {
     if ([self.pickedCards firstObject].matched == NO) {
@@ -77,7 +78,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   }
 }
 
-//same as set
+//same as set game
 - (nullable instancetype)initWithCardCount:(NSUInteger)count usingDeck:(CGDeck *)deck {
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
@@ -99,7 +100,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   return self;
 }
 
-//same as set
+//same as set game
 - (void)markCardsChosenSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.chosen = sign;
@@ -108,7 +109,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   card.chosen = sign;
 }
 
-//same as set
+//same as set game
 - (void)markCardsMatchedSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.matched = sign;

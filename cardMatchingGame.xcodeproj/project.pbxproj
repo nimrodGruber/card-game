@@ -20,6 +20,7 @@
 		F76A87611FCEE76500B15818 /* CGSetCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A875F1FCEE76500B15818 /* CGSetCard.mm */; };
 		F76A87641FCF18CF00B15818 /* CGSetDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87621FCF18CF00B15818 /* CGSetDeck.mm */; };
 		F76A87671FCFC99600B15818 /* CGSetGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87651FCFC99600B15818 /* CGSetGame.mm */; };
+		F76A876A1FCFD47C00B15818 /* CGCardGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = F76A87681FCFD47C00B15818 /* CGCardGame.mm */; };
 		F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C8F1FC2B23500D277B0 /* CGCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C931FC2BA3300D277B0 /* CGDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C921FC2BA3200D277B0 /* CGDeck.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C991FC2FA4B00D277B0 /* CGPlayingCard.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
@@ -72,6 +73,8 @@
 		F76A87631FCF18CF00B15818 /* CGSetDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGSetDeck.h; sourceTree = "<group>"; };
 		F76A87651FCFC99600B15818 /* CGSetGame.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CGSetGame.mm; sourceTree = "<group>"; };
 		F76A87661FCFC99600B15818 /* CGSetGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGSetGame.h; sourceTree = "<group>"; };
+		F76A87681FCFD47C00B15818 /* CGCardGame.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CGCardGame.mm; sourceTree = "<group>"; };
+		F76A87691FCFD47C00B15818 /* CGCardGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGCardGame.h; sourceTree = "<group>"; };
 		F78B2C8E1FC2B23500D277B0 /* CGCard.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = CGCard.h; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C8F1FC2B23500D277B0 /* CGCard.mm */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = CGCard.mm; sourceTree = "<group>"; tabWidth = 2; };
 		F78B2C911FC2BA3200D277B0 /* CGDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGDeck.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				F78B2C9C1FC3057F00D277B0 /* CGPlayingCardDeck.mm */,
 				F76A87631FCF18CF00B15818 /* CGSetDeck.h */,
 				F76A87621FCF18CF00B15818 /* CGSetDeck.mm */,
+				F76A87691FCFD47C00B15818 /* CGCardGame.h */,
+				F76A87681FCFD47C00B15818 /* CGCardGame.mm */,
 				F78B2C9F1FC4610500D277B0 /* CGCardMatchingGame.h */,
 				F78B2CA01FC4610500D277B0 /* CGCardMatchingGame.mm */,
 				F76A87661FCFC99600B15818 /* CGSetGame.h */,
@@ -354,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */,
+				F76A876A1FCFD47C00B15818 /* CGCardGame.mm in Sources */,
 				F71FB3861FC1C71F009C7874 /* ViewController.m in Sources */,
 				F76A87611FCEE76500B15818 /* CGSetCard.mm in Sources */,
 				F78B2C901FC2B23500D277B0 /* CGCard.mm in Sources */,
