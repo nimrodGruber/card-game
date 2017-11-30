@@ -4,8 +4,15 @@
 #import "CGSetDeck.h"
 #import "CGSetCard.h"
 #import "SetCardsViewController.h"
+#import "CGSetGame.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@interface SetCardsViewController ()
+
+@property (strong, nonatomic) CGSetGame *game;
+
+@end
 
 @implementation SetCardsViewController
 
@@ -69,6 +76,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)backGroundImageForCard:(CGCard *)card {
   return [UIImage imageNamed:@"cardFront"];
+}
+
+- (CGSetGame *)game
+{
+  if (!_game) {
+    _game = [[CGSetGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
+  }
+  
+  return _game;
 }
 
 @end

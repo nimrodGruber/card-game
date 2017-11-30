@@ -83,7 +83,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
     _log = [[NSMutableString alloc] init];
-    _matchMode = 2; //in set game matchMode is always 3
+    _matchMode = 3; //in set game matchMode is always 3
     _pickedCards = [[NSMutableArray<CGCard *> alloc] init];
     _score = 0;
     for (NSUInteger i = 0; i < count; ++i) {
