@@ -7,17 +7,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation CGSetCard
 
-
 @synthesize color = _color;
 @synthesize number = _number;
 @synthesize shading = _shading;
 @synthesize symbol = _symbol;
-
-//- (NSString *)contents {
-//  NSArray *rankStrings = [CGPlayingCard rankStrings];
-//
-//  return [rankStrings[static_cast<unsigned long long>(self.rank)] stringByAppendingString:self.suit];
-//}
 
 - (instancetype)init {
   if (self = [super init]) {
@@ -46,11 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 
   return cardsAreLegalSet;
 }
-
-
-//+ (NSArray *)rankStrings {
-//  return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];
-//}
 
 - (ColorType)color {
   return ((_color < undefinedColor) && (_color >= 0)) ? _color : undefinedColor;

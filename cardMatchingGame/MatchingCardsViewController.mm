@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
   return [[CGPlayingCardDeck alloc] init]; 
 }
 
+- (NSString *)titleForCard:(CGCard *)card {
+  return card.chosen ? card.contents : @"";
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

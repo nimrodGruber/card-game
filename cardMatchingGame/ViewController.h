@@ -16,4 +16,6 @@
 // For subclasses.
 - (CGDeck *)createDeck; // Abstract.
 
+- (NSString *)titleForCard:(CGCard *)card; // Abstract.
+
 @end

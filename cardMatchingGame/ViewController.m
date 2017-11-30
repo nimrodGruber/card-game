@@ -28,7 +28,6 @@
 }
 
 - (CGDeck *)createDeck { // Abstract.
-  //return [[CGPlayingCardDeck alloc] init];
   return nil;
 }
 
