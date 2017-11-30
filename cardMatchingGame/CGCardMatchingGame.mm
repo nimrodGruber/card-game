@@ -31,14 +31,15 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   
   [self flipAndClearPickedCardsIfNeeded:card];
 
-  if (!card.matched) {
-    if (card.chosen) {
+  if (card.matched) {
+    return;
+  } else if (card.chosen) {
       card.chosen = NO;
       [self.pickedCards removeObject:card];
       [self logRemoveUnchosenCard:card];
-    } else {
+  } else {
       [self logAddChosenCard:card];
-      
+    
       card.chosen = YES;
 
       if (self.pickedCards.count == self.matchMode - 1) {
@@ -59,14 +60,14 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
           [self logPresentMatchScore:card points:(kMismatchPenalty + kCostToChoose) success:NO];
         }
       }
-      
+    
       [self.pickedCards addObject:card];
-      
+    
       self.score -= kCostToChoose;
-    }
   }
 }
 
+//same as set
 - (void)flipAndClearPickedCardsIfNeeded:(CGCard *)card {
   if (self.pickedCards.count == self.matchMode) {
     if ([self.pickedCards firstObject].matched == NO) {
@@ -76,11 +77,12 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   }
 }
 
+//same as set
 - (nullable instancetype)initWithCardCount:(NSUInteger)count usingDeck:(CGDeck *)deck {
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
     _log = [[NSMutableString alloc] init];
-    _matchMode = 2;
+    _matchMode = 2; //in set game matchMode is always 3
     _pickedCards = [[NSMutableArray<CGCard *> alloc] init];
     _score = 0;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -97,6 +99,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   return self;
 }
 
+//same as set
 - (void)markCardsChosenSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.chosen = sign;
@@ -105,6 +108,7 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
   card.chosen = sign;
 }
 
+//same as set
 - (void)markCardsMatchedSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.matched = sign;
