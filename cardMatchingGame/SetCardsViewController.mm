@@ -21,9 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)titleForCard:(CGCard *)card {
-  if (![card isKindOfClass:[CGSetCard class]]) {
-    return @"";
-  } else {
+//  if (![card isKindOfClass:[CGSetCard class]]) {
+//    return @"";
+//  } else {
     CGSetCard *setCard = (CGSetCard *) card;
     NSMutableString *cardData = [[NSMutableString alloc] init];
     [cardData appendString:[self numberValue:setCard]];
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
     [cardData appendString:[self colorValue:setCard]];
     [cardData appendString:[self shadeValue:setCard]];
     return cardData;
-  }
+//  }
 }
 
 - (NSString *)colorValue:(CGSetCard *)card {
@@ -78,14 +78,14 @@ NS_ASSUME_NONNULL_BEGIN
   return [UIImage imageNamed:@"cardFront"];
 }
 
-- (CGSetGame *)game
-{
-  if (!_game) {
-    _game = [[CGSetGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
-  }
-  
-  return _game;
-}
+//- (CGSetGame *)game
+//{
+//  if (!_game) {
+//    _game = [[CGSetGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
+//  }
+//
+//  return _game;
+//}
 
 @end
 
