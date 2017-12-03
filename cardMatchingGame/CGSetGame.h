@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGCard *)cardAtIndex:(NSUInteger)index;
 - (void)chooseCardAtIndex:(NSUInteger)index;
 
+-(void)extractCardAttributedTitle:(CGCard *)card title:(NSMutableAttributedString *)title;
+
 //@property (readonly, nonatomic) NSMutableString *log;
 //@property (nonatomic) NSUInteger matchMode;
 //@property (readonly, nonatomic) NSInteger score;
