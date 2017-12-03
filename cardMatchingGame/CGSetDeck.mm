@@ -16,11 +16,10 @@ static const int kMaxSetCardFeatures = 3;
       for (int numberNum = 0; numberNum < kMaxSetCardFeatures; ++numberNum) {
         for (int shadingNum = 0; shadingNum < kMaxSetCardFeatures; ++shadingNum) {
           for (int symbolNum = 0; symbolNum < kMaxSetCardFeatures; ++symbolNum) {
-            CGSetCard *card = [[CGSetCard alloc] init];
-            card.color = (ColorType) colorNum;
-            card.number = (NumberType) numberNum;
-            card.shading = (ShadeType) shadingNum;
-            card.symbol = (SymbolType) symbolNum;
+            CGSetCard *card = [[CGSetCard alloc] initWithCardColor:colorNum
+                                                   usingNumberType:numberNum
+                                                    usingShadeType:shadingNum
+                                                    usingSymbolType:symbolNum];
             [self addCard:card];
           }
         }

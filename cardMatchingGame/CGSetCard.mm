@@ -23,8 +23,21 @@ NS_ASSUME_NONNULL_BEGIN
   return self;
 }
 
-- (int)matchThreeCards:(NSMutableArray *)otherCards {
+- (instancetype)initWithCardColor:(int)color
+                 usingNumberType:(int)number
+                   usingShadeType:(int)shade
+                   usingSymbolType:(int)symbol {
+  if (self = [super init]) {
+    _color = (ColorType)color;
+    _number = (NumberType)number;
+    _shading = (ShadeType)shade;
+    _symbol = (SymbolType)symbol;
+  }
+  
+  return self;
+}
 
+- (int)matchThreeCards:(NSMutableArray *)otherCards {
   BOOL cardsAreLegalSet = NO;
   
   CGSetCard *first = [otherCards firstObject];

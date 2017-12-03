@@ -35,6 +35,11 @@ typedef enum {
   undefinedSymbol
 } SymbolType;
 
+- (instancetype)initWithCardColor:(int)color
+                  usingNumberType:(int)number
+                   usingShadeType:(int)shade
+                   usingSymbolType:(int)symbol;
+
 @property (nonatomic) ColorType color;
 @property (nonatomic) NumberType number;
 @property (nonatomic) ShadeType shading;
