@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation CGSetGame
 
 static const int kMismatchPenalty = 2;
-static const int kMatchBonus = 4;
+static const int kMatchBonus = 12;
 static const int kCostToChoose = 1;
 //static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
 
@@ -43,7 +43,6 @@ static const int kCostToChoose = 1;
   return self;
 }
 
-//same as set game
 - (CGCard *)cardAtIndex:(NSUInteger)index
 {
   return (index <= self.cards.count) ? self.cards[index] : nil;
@@ -67,12 +66,7 @@ static const int kCostToChoose = 1;
     
     if (self.pickedCards.count == self.matchMode - 1) {
       int matchScore = 0;
-      
-      if (self.matchMode == 2) {
-        matchScore = [card matchTwoCards:self.pickedCards];
-      } else { // if (self.matchMode == 3)
-        matchScore = [card matchThreeCards:self.pickedCards];
-      }
+      matchScore = [card matchThreeCards:self.pickedCards];
       
       if (matchScore) {
         self.score += matchScore * kMatchBonus;

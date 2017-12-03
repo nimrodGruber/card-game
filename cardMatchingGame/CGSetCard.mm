@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
   
   if ( (([self allNumbersAreEqual:cards]) || ([self allNumbersAreDifferent:cards])) &&
        (([self allSymbolAreEqual:cards])  || ([self allSymbolAreDifferent:cards]))  &&
-       (([self allShadingAreEqual:cards]) || ([self allSymbolAreDifferent:cards]))  &&
+       (([self allShadingAreEqual:cards]) || ([self allShadingAreDifferent:cards]))  &&
        (([self allColorsAreEqual:cards])  || ([self allColorsAreDifferent:cards]))  ) {
     cardsAreLegalSet = YES;
   }
