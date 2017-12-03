@@ -21,60 +21,59 @@ NS_ASSUME_NONNULL_BEGIN
   return [[CGSetDeck alloc] init];
 }
 
-- (NSString *)titleForCard:(CGCard *)card {
-  if (![card isKindOfClass:[CGSetCard class]]) {
-    return @"";
-  } else {
-    CGSetCard *setCard = (CGSetCard *) card;
-    NSMutableString *cardData = [[NSMutableString alloc] init];
-    [cardData appendString:[self numberValue:setCard]];
-    [cardData appendString:[self symbolValue:setCard]];
-    [cardData appendString:[self colorValue:setCard]];
-    [cardData appendString:[self shadeValue:setCard]];
-    return cardData;
-  }
-}
+//- (NSString *)titleForCard:(CGCard *)card {
+//  if (![card isKindOfClass:[CGSetCard class]]) {
+//    return @"";
+//  } else {
+//    CGSetCard *setCard = (CGSetCard *) card;
+//    NSMutableString *cardData = [[NSMutableString alloc] init];
+//    [cardData appendString:[self numberValue:setCard]];
+//    [cardData appendString:[self symbolValue:setCard]];
+//    [cardData appendString:[self colorValue:setCard]];
+//    [cardData appendString:[self shadeValue:setCard]];
+//    return cardData;
+//  }
+//}
 
-- (NSString *)colorValue:(CGSetCard *)card {
-  if (card.color == red) {
-    return @"r";
-  } else if (card.color == green) {
-    return @"g";
-  } else {
-    return @"p";
-  }
-}
-
-- (NSString *)numberValue:(CGSetCard *)card {
-  if (card.number == 1) {
-    return @"1";
-  } else if (card.number == 2) {
-    return @"2";
-  } else {
-    return @"3";
-  }
-}
-
-- (NSString *)shadeValue:(CGSetCard *)card {
-  if (card.shading == solid) {
-    return @"so";
-  } else if (card.shading == striped) {
-    return @"st";
-  } else { //card.shading == open
-    return @"op";
-  }
-}
-
-- (NSString *)symbolValue:(CGSetCard *)card {
-  if (card.symbol == triangle) {
-    return @"▲";
-  } else if (card.symbol == circle) {
-    return @"●";
-  } else { //card.symbol == squar
-    return @"■";
-  }
-  
-}
+//- (NSString *)colorValue:(CGSetCard *)card {
+//  if (card.color == red) {
+//    return @"r";
+//  } else if (card.color == green) {
+//    return @"g";
+//  } else {
+//    return @"p";
+//  }
+//}
+//
+//- (NSString *)numberValue:(CGSetCard *)card {
+//  if (card.number == 1) {
+//    return @"1";
+//  } else if (card.number == 2) {
+//    return @"2";
+//  } else {
+//    return @"3";
+//  }
+//}
+//
+//- (NSString *)shadeValue:(CGSetCard *)card {
+//  if (card.shading == solid) {
+//    return @"so";
+//  } else if (card.shading == striped) {
+//    return @"st";
+//  } else { //card.shading == open
+//    return @"op";
+//  }
+//}
+//
+//- (NSString *)symbolValue:(CGSetCard *)card {
+//  if (card.symbol == triangle) {
+//    return @"▲";
+//  } else if (card.symbol == circle) {
+//    return @"●";
+//  } else { //card.symbol == squar
+//    return @"■";
+//  }
+//}
 
 - (UIImage *)backGroundImageForCard:(CGCard *)card {
   return [UIImage imageNamed:@"cardFront"];
@@ -101,36 +100,37 @@ NS_ASSUME_NONNULL_BEGIN
     CGCard *card = [self.game cardAtIndex:cardButtonIndex];
     
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-    
-    [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
-    
-    if ([self findCardShade:card] == opened) {
-      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
-                              NSStrokeWidthAttributeName : @-5 }
-                     range:NSMakeRange(0, [title length])];
-    } else if ([self findCardShade:card] == solid) {
-      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
-                              NSStrokeWidthAttributeName : @5 }
-                     range:NSMakeRange(0, [title length])];
-    } else { // (setCard.shading == striped)
-      if ([self findCardColor:card] == [UIColor redColor]) {
-        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
-                                NSBackgroundColorAttributeName : [[UIColor redColor] colorWithAlphaComponent:0.2] }
-                       range:NSMakeRange(0, [title length])];
-      } else if ([self findCardColor:card] == [UIColor greenColor]) {
-        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
-                                NSBackgroundColorAttributeName : [[UIColor greenColor] colorWithAlphaComponent:0.2] }
-                       range:NSMakeRange(0, [title length])];
-      } else {
-        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
-                                NSBackgroundColorAttributeName : [[UIColor purpleColor] colorWithAlphaComponent:0.2] }
-                       range:NSMakeRange(0, [title length])];
-      }
-    }
+    [self extractCardAttributedTitle:card title:title];
 
-    //[self setCardShade:card btn:cardButton]; //not applied for some reasone
+// --> Refactor the following title code block into a separate function:
+//    [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
+//
+//    if ([self findCardShade:card] == opened) {
+//      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+//                              NSStrokeWidthAttributeName : @-5 }
+//                     range:NSMakeRange(0, [title length])];
+//    } else if ([self findCardShade:card] == solid) {
+//      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+//                              NSStrokeWidthAttributeName : @5 }
+//                     range:NSMakeRange(0, [title length])];
+//    } else { // (setCard.shading == striped)
+//      if ([self findCardColor:card] == [UIColor redColor]) {
+//        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+//                                NSBackgroundColorAttributeName : [[UIColor redColor] colorWithAlphaComponent:0.2] }
+//                       range:NSMakeRange(0, [title length])];
+//      } else if ([self findCardColor:card] == [UIColor greenColor]) {
+//        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+//                                NSBackgroundColorAttributeName : [[UIColor greenColor] colorWithAlphaComponent:0.2] }
+//                       range:NSMakeRange(0, [title length])];
+//      } else {
+//        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+//                                NSBackgroundColorAttributeName : [[UIColor purpleColor] colorWithAlphaComponent:0.2] }
+//                       range:NSMakeRange(0, [title length])];
+//      }
+//    }
+// <-- Finish refactoring of title block here.
+    
     [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-    //[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
     [cardButton setBackgroundImage:[self backGroundImageForCard:card] forState:UIControlStateNormal];
     cardButton.enabled = !card.matched;
     self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
@@ -177,7 +177,34 @@ NS_ASSUME_NONNULL_BEGIN
      return @"■";
    }
  }
-                                   
+
+-(void)extractCardAttributedTitle:(CGCard *)card title:(NSMutableAttributedString *)title {
+  [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
+  
+  if ([self findCardShade:card] == opened) {
+    [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                            NSStrokeWidthAttributeName : @-5 }
+                   range:NSMakeRange(0, [title length])];
+  } else if ([self findCardShade:card] == solid) {
+    [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                            NSStrokeWidthAttributeName : @5 }
+                   range:NSMakeRange(0, [title length])];
+  } else { // (setCard.shading == striped)
+    if ([self findCardColor:card] == [UIColor redColor]) {
+      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                              NSBackgroundColorAttributeName : [[UIColor redColor] colorWithAlphaComponent:0.2] }
+                     range:NSMakeRange(0, [title length])];
+    } else if ([self findCardColor:card] == [UIColor greenColor]) {
+      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                              NSBackgroundColorAttributeName : [[UIColor greenColor] colorWithAlphaComponent:0.2] }
+                     range:NSMakeRange(0, [title length])];
+    } else {
+      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                              NSBackgroundColorAttributeName : [[UIColor purpleColor] colorWithAlphaComponent:0.2] }
+                     range:NSMakeRange(0, [title length])];
+    }
+  }
+}
                                    
 @end
 

@@ -113,6 +113,34 @@ static const int kCostToChoose = 1;
 }
 
 
+- (void)logRemoveUnchosenCard:(CGCard *)card {
+  NSRange cardRange = [self.log rangeOfString:card.contents];
+  [self.log deleteCharactersInRange:cardRange];
+}
+
+- (void)logAddChosenCard:(CGCard *)card {
+  if (self.log.length > 6) {
+    [self.log setString: @""];
+  }
+  [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
+}
+
+- (void)logPresentMatchScore:(CGCard *)card points:(NSUInteger)points success:(BOOL)success {
+  [self.log setString: @""];
+  
+  for (CGCard *pCard in self.pickedCards) {
+    [self.log appendString:[NSString stringWithFormat:@"%@", pCard.contents]];
+  }
+  
+  [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
+  
+  if (success) {
+    [self.log appendString:[NSString stringWithFormat:@" matched for %lu points", (unsigned long)points]];
+  } else {
+    [self.log appendString:[NSString stringWithFormat:@" wrong match %lu penalty", (unsigned long)points]];
+  }
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

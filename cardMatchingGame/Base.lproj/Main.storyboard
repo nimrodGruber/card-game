@@ -369,12 +369,12 @@
                                     <action selector="reDeal:" destination="Mc3-fv-MeL" eventType="touchUpInside" id="qdY-MW-RJT"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PBg-Ge-vb8">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="PBg-Ge-vb8">
                                 <rect key="frame" x="147" y="645" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="2-Card"/>
-                                    <segment title="3-Card"/>
+                                    <segment title="2-Card" enabled="NO"/>
+                                    <segment title="3-Card" enabled="NO"/>
                                 </segments>
                                 <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
