@@ -99,32 +99,53 @@ NS_ASSUME_NONNULL_BEGIN
   for (UIButton *cardButton in self.cardButtons) {
     NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
     CGCard *card = [self.game cardAtIndex:cardButtonIndex];
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-    [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
-    [title setAttributes:@{ NSStrokeWidthAttributeName : @ -3/*[self findCardShade:card]*/,
-                            NSStrokeColorAttributeName : [self findCardColor:card],
-                            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
-                            }
-                   range:NSMakeRange(0, [title length])];
-    [cardButton setAttributedTitle:title forState:UIControlStateNormal];
     
-    [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
+    
+    [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
+    
+    if ([self findCardShade:card] == opened) {
+      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                              NSStrokeWidthAttributeName : @-5 }
+                     range:NSMakeRange(0, [title length])];
+    } else if ([self findCardShade:card] == solid) {
+      [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                              NSStrokeWidthAttributeName : @5 }
+                     range:NSMakeRange(0, [title length])];
+    } else { // (setCard.shading == striped)
+      if ([self findCardColor:card] == [UIColor redColor]) {
+        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                                NSBackgroundColorAttributeName : [[UIColor redColor] colorWithAlphaComponent:0.2] }
+                       range:NSMakeRange(0, [title length])];
+      } else if ([self findCardColor:card] == [UIColor greenColor]) {
+        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                                NSBackgroundColorAttributeName : [[UIColor greenColor] colorWithAlphaComponent:0.2] }
+                       range:NSMakeRange(0, [title length])];
+      } else {
+        [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
+                                NSBackgroundColorAttributeName : [[UIColor purpleColor] colorWithAlphaComponent:0.2] }
+                       range:NSMakeRange(0, [title length])];
+      }
+    }
+
+    //[self setCardShade:card btn:cardButton]; //not applied for some reasone
+    [cardButton setAttributedTitle:title forState:UIControlStateNormal];
+    //[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
     [cardButton setBackgroundImage:[self backGroundImageForCard:card] forState:UIControlStateNormal];
     cardButton.enabled = !card.matched;
-//    self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
-//    self.logLable.text = self.game.log;
+    self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+    self.logLable.text = self.game.log;
   }
 }
 
-- (int)findCardShade:(CGCard *)card {
+- (ShadeType)findCardShade:(CGCard *)card {
   CGSetCard *setCard = (CGSetCard *) card;
-  
   if (setCard.shading == solid) {
-    return 0;
-  } else if (setCard.shading == striped) {
-    return 3;
-  } else { //if setCard.shading == opened
-    return -3;
+    return solid;
+  } else if (setCard.shading == opened) {
+    return opened;
+  } else { // (setCard.shading == striped)
+    return striped;
   }
 }
 
@@ -135,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIColor redColor];
   } else if (setCard.color == green) {
     return [UIColor greenColor];
-  } else {
+  } else { //(setCard.color == purple)
     return [UIColor purpleColor];
   }
 }

@@ -22,4 +22,8 @@
 
 - (void) updateUI;
 
+@property (weak, nonatomic) IBOutlet UILabel *scoreLable;
+
+@property (weak, nonatomic) IBOutlet UILabel *logLable;
+
 @end
