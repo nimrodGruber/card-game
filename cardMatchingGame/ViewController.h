@@ -20,4 +20,6 @@
 
 - (UIImage *)backGroundImageForCard:(CGCard *)card; // Abstract.
 
+- (void) updateUI;
+
 @end
