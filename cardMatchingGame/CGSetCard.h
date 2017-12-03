@@ -14,12 +14,12 @@ typedef enum {
   undefinedColor
 } ColorType;
 
-typedef enum { //TODO - switch to simple ints
-  one = 0,
-  two = 1,
-  three = 2,
-  undefinedNumber
-} NumberType;
+//typedef enum { //TODO - switch to simple ints
+//  one = 0,
+//  two = 1,
+//  three = 2,
+//  undefinedNumber
+//} int;
 
 typedef enum {
   solid = 0,
@@ -41,7 +41,7 @@ typedef enum {
                    usingSymbolType:(int)symbol;
 
 @property (nonatomic) ColorType color;
-@property (nonatomic) NumberType number;
+@property (nonatomic) int number;
 @property (nonatomic) ShadeType shading;
 @property (nonatomic) SymbolType symbol;
 

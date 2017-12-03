@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation CGSetCard
 
+static const int kMaxNumberAttributes = 4;
 @synthesize color = _color;
 @synthesize number = _number;
 @synthesize shading = _shading;
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init {
   if (self = [super init]) {
-    _number = undefinedNumber;
+    _number = kMaxNumberAttributes;
     _symbol = undefinedSymbol;
     _shading = undefinedShade;
     _color = undefinedColor;
@@ -29,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
                    usingSymbolType:(int)symbol {
   if (self = [super init]) {
     _color = (ColorType)color;
-    _number = (NumberType)number;
+    _number = (int)number;
     _shading = (ShadeType)shade;
     _symbol = (SymbolType)symbol;
   }
@@ -56,6 +57,10 @@ NS_ASSUME_NONNULL_BEGIN
 
   return cardsAreLegalSet;
 }
+
+//- (BOOL)allCardsAreEqual:(NSMutableArray *)cards withFeature:(enum)featue {
+//
+//}
 
 - (BOOL)allNumbersAreEqual:(NSMutableArray *)cards {
   CGSetCard *first = [cards objectAtIndex:0];
@@ -157,8 +162,8 @@ NS_ASSUME_NONNULL_BEGIN
   return ((_color < undefinedColor) && (_color >= 0)) ? _color : undefinedColor;
 }
 
-- (NumberType)number {
-  return ((_number < undefinedNumber) && (_number >= 0)) ? _number : undefinedNumber;
+- (int)number {
+  return ((_number < kMaxNumberAttributes) && (_number >= 1)) ? _number : kMaxNumberAttributes;
 }
 
 - (ShadeType)shading {
@@ -175,8 +180,8 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
--(void)setNumber:(NumberType)number {
-  if ((number < undefinedNumber) && (number >= 0)) {
+-(void)setNumber:(int)number {
+  if ((number < kMaxNumberAttributes) && (number >= 0)) {
     _number = number;
   }
 }

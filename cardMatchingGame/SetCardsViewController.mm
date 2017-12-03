@@ -46,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)numberValue:(CGSetCard *)card {
-  if (card.number == one) {
+  if (card.number == 1) {
     return @"1";
-  } else if (card.number == two) {
+  } else if (card.number == 2) {
     return @"2";
   } else {
     return @"3";
