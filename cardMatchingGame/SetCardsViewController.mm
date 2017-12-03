@@ -1,16 +1,17 @@
 // Copyright (c) 2017 Lightricks. All rights reserved.
 // Created by nimrod gruber.
 
-#import "CGSetDeck.h"
 #import "CGSetCard.h"
-#import "SetCardsViewController.h"
+#import "CGSetDeck.h"
 #import "CGSetGame.h"
+#import "SetCardsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SetCardsViewController ()
 
 @property (strong, nonatomic) CGSetGame *game;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 @end
 
@@ -78,14 +79,13 @@ NS_ASSUME_NONNULL_BEGIN
   return [UIImage imageNamed:@"cardFront"];
 }
 
-//- (CGSetGame *)game
-//{
-//  if (!_game) {
-//    _game = [[CGSetGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
-//  }
-//
-//  return _game;
-//}
+- (CGCardGame *)game {
+  if (!_game) {
+    _game = [[CGSetGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
+  }
+
+  return _game;
+}
 
 @end
 

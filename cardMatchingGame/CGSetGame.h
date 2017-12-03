@@ -2,12 +2,13 @@
 // Created by nimrod gruber.
 
 #import "CGDeck.h"
+#import "CGCardGame.h"
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CGSetGame : NSObject
+@interface CGSetGame : CGCardGame
 
 - (instancetype)init NS_UNAVAILABLE;
 - (nullable instancetype)initWithCardCount:(NSUInteger)count
@@ -16,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGCard *)cardAtIndex:(NSUInteger)index;
 - (void)chooseCardAtIndex:(NSUInteger)index;
 
-@property (readonly, nonatomic) NSMutableString *log;
-@property (nonatomic) NSUInteger matchMode;
-@property (readonly, nonatomic) NSInteger score;
+//@property (readonly, nonatomic) NSMutableString *log;
+//@property (nonatomic) NSUInteger matchMode;
+//@property (readonly, nonatomic) NSInteger score;
 
 @end
 

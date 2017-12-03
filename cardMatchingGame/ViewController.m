@@ -7,6 +7,7 @@
 //
 
 #import "CGCardMatchingGame.h"
+#import "CGCardGame.h"
 //#import "CGPlayingCardDeck.h"
 
 #import "ViewController.h"
@@ -14,7 +15,7 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) CGCardMatchingGame *game;
+@property (strong, nonatomic) CGCardGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UILabel *logLable;
@@ -31,13 +32,14 @@
   return nil;
 }
 
-- (CGCardMatchingGame *)game
-{
-  if (!_game) {
-    _game = [[CGCardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
-  }
-  
+- (CGCardGame *)game { // Abstract.
+  _game = nil;
   return _game;
+//  if (!_game) {
+//    _game = [[CGCardMatchingGame alloc] initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
+//  }
+//
+//  return _game;
 }
 
 - (IBAction)reDeal:(UIButton __unused *)sender {

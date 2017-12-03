@@ -8,9 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CGSetGame()
 
 @property (strong, nonatomic) NSMutableArray<CGCard *> *cards;
-@property (readwrite, nonatomic) NSMutableString *log;
+//@property (readwrite, nonatomic) NSMutableString *log;
 @property (strong, nonatomic, nullable) NSMutableArray<CGCard *> *pickedCards;
-@property (readwrite, nonatomic) NSInteger score;
+//@property (readwrite, nonatomic) NSInteger score;
 
 @end
 
@@ -19,16 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 static const int kMismatchPenalty = 2;
 static const int kMatchBonus = 4;
 static const int kCostToChoose = 1;
-static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
+//static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
 
 //same as cardMatch game
 - (nullable instancetype)initWithCardCount:(NSUInteger)count usingDeck:(CGDeck *)deck {
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
-    _log = [[NSMutableString alloc] init];
-    _matchMode = 3; //in set game matchMode is always 3
+    self.log = [[NSMutableString alloc] init];
+    self.matchMode = 3; //in set game matchMode is always 3
     _pickedCards = [[NSMutableArray<CGCard *> alloc] init];
-    _score = 0;
+    self.score = 0;
     for (NSUInteger i = 0; i < count; ++i) {
       CGCard *card = [deck drawRandomCard];
       if (card) {
