@@ -8,9 +8,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CGCardMatchingGame()
 
 @property (strong, nonatomic) NSMutableArray<CGCard *> *cards;
-//@property (readwrite, nonatomic) NSMutableString *log;
-@property (strong, nonatomic, nullable) NSMutableArray<CGCard *> *pickedCards;
-//@property (readwrite, nonatomic) NSInteger score;
 
 @end
 
@@ -21,9 +18,8 @@ static const int kMatchBonus = 4;
 static const int kCostToChoose = 1;
 static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
 
-//same as set game
-- (CGCard *)cardAtIndex:(NSUInteger)index
-{
+//should be in parent class
+- (CGCard *)cardAtIndex:(NSUInteger)index {
   return (index <= self.cards.count) ? self.cards[index] : nil;
 }
 
@@ -84,8 +80,6 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
     _cards = [[NSMutableArray<CGCard *> alloc] init];
     self.log = [[NSMutableString alloc] init];
     self.matchMode = 2; //in set game matchMode is always 3
-    _pickedCards = [[NSMutableArray<CGCard *> alloc] init];
-    self.score = 0;
     for (NSUInteger i = 0; i < count; ++i) {
       CGCard *card = [deck drawRandomCard];
       if (card) {

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSMutableString *log;
 @property (nonatomic) NSUInteger matchMode;
 @property (nonatomic) NSInteger score;
+@property (strong, nonatomic, nullable) NSMutableArray<CGCard *> *pickedCards;
 
 //- (instancetype)init NS_UNAVAILABLE;
 //- (nullable instancetype)initWithCardCount:(NSUInteger)count
