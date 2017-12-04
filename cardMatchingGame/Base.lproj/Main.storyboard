@@ -286,16 +286,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuI-YJ-ifP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="-1409"/>
+            <point key="canvasLocation" x="529" y="-1378"/>
         </scene>
         <!--Card Matching-->
         <scene sceneID="TxP-yY-GMf">
             <objects>
                 <tabBarController title="Card Matching" id="ySu-ZG-3GA" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GWe-Pz-ASG">
-                        <barButtonItem key="rightBarButtonItem" title="History" id="Mwf-zy-9kf">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="swn-Cr-4ln">
                             <connections>
-                                <segue destination="pQF-Q7-2cH" kind="push" identifier="History" id="bRG-vj-2B3"/>
+                                <segue destination="pQF-Q7-2cH" kind="push" identifier="toHistory" id="UdP-X3-NPR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -321,7 +321,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="A brief history of the card matching game : " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-9f-MTQ" customClass="HistoryContoller">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="A brief history of the card matching game : " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-9f-MTQ">
                                 <rect key="frame" x="20" y="111" width="374" height="148"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,18 +337,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="History" id="IE9-P6-sTA"/>
                     <connections>
-                        <outlet property="matchingHistory" destination="uRw-9f-MTQ" id="evV-FU-S8z"/>
+                        <outlet property="historyOfSetGame" destination="uRw-9f-MTQ" id="yyc-oS-wkD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRb-lt-Zwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344.9275362318842" y="-615.48913043478262"/>
+            <point key="canvasLocation" x="1422" y="-615"/>
         </scene>
         <!--SetGame-->
         <scene sceneID="ceC-6G-CML">
             <objects>
                 <viewController id="Mc3-fv-MeL" customClass="SetCardsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kZT-8n-hy1" customClass="Setc">
+                    <view key="view" contentMode="scaleToFill" id="kZT-8n-hy1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

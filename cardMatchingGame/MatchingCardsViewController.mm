@@ -1,9 +1,10 @@
 // Copyright (c) 2017 Lightricks. All rights reserved.
 // Created by nimrod gruber.
 
-#import "CGPlayingCardDeck.h"
 #import "CGCardMatchingGame.h"
+#import "HistoryViewController.h"
 #import "MatchingCardsViewController.h"
+#import "CGPlayingCardDeck.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,7 +67,6 @@ NS_ASSUME_NONNULL_BEGIN
   
   self.logLable.text = log;
 }
-
 
 @end
 

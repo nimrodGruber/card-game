@@ -4,8 +4,8 @@
 #import "CGSetCard.h"
 #import "CGSetDeck.h"
 #import "CGSetGame.h"
-#import "SetCardsViewController.h"
 #import "HistoryViewController.h"
+#import "SetCardsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -76,7 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
   }
   
   self.logLable.text = log;
-//  [self prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender]
 }
   
 //
@@ -220,10 +219,10 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
-  if ([segue.identifier isEqualToString:@"History"]) {
+  if ([segue.identifier isEqualToString:@"toHistory"]) {
     if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
       HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
-      [history.historyText appendString:self.logLable.text];
+      history.textOfSetMove = self.logLable.text;
     }
   }
 }

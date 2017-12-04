@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
         CGPlayingCard *card = [[CGPlayingCard alloc] init];
         card.rank = rank;
         card.suit = suit;
-        [self addCard:card /*atTop:NO*/];
+        [self addCard:card];
       }
     }
   }

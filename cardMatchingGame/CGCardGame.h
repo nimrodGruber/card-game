@@ -9,20 +9,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CGCardGame : NSObject
 
-- (CGCard *)cardAtIndex:(NSUInteger)index;
-- (void)chooseCardAtIndex:(NSUInteger)index;
+- (CGCard *)cardAtIndex:(NSUInteger)index; // Abstract.
+- (void)chooseCardAtIndex:(NSUInteger)index; // Abstract.
 
 @property (nonatomic) NSMutableString *log;
 @property (nonatomic) NSUInteger matchMode;
 @property (nonatomic) NSInteger score;
 @property (strong, nonatomic, nullable) NSMutableArray<CGCard *> *pickedCards;
 @property (nonatomic) int lastMatchScoring;
-
-//- (instancetype)init NS_UNAVAILABLE;
-//- (nullable instancetype)initWithCardCount:(NSUInteger)count
-//                                 usingDeck:(CGDeck *)deck NS_DESIGNATED_INITIALIZER;
-//
-//- (CGCard *)cardAtIndex:(NSUInteger)index;
 
 @end
 

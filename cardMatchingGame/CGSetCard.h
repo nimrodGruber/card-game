@@ -14,13 +14,6 @@ typedef enum {
   undefinedColor
 } ColorType;
 
-//typedef enum { //TODO - switch to simple ints
-//  one = 0,
-//  two = 1,
-//  three = 2,
-//  undefinedNumber
-//} int;
-
 typedef enum {
   solid = 0,
   striped = 1,

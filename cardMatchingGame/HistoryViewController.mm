@@ -6,28 +6,37 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController ()
-@property (weak, nonatomic) IBOutlet HistoryViewController *matchingHistory;
 
 @end
 
 @implementation HistoryViewController
 
-- (void)setHistoryText:(NSMutableString *)historyText {
-  [historyText appendString:@""];
-  [historyText appendString:historyText];
+- (void)setTextOfMatchMove:(NSMutableString *)textOfMatchMove {
+  _textOfMatchMove = textOfMatchMove;
+  
   if (self.view.window) {
-   [self updateHistoryUI];
+   [self updateMatchHistory];
+  }
+}
+
+- (void)setTextOfSetMove:(NSMutableString *)textOfSetMove {
+  _textOfSetMove = textOfSetMove;
+  
+  if (self.view.window) {
+    [self updateSetHistory];
   }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:YES];
-  [self updateHistoryUI];
+  [self updateSetHistory];
 }
 
+- (void)updateSetHistory {
+  [self.historyOfSetGame setText:self.textOfSetMove];
+}
 
-
-- (void)updateHistoryUI {
+- (void)updateMatchHistory {
   
 }
 

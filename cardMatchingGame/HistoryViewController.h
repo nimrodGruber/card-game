@@ -7,7 +7,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController : UIViewController
 
-@property (strong, nonatomic) NSMutableString *historyText;
+@property (weak, nonatomic) IBOutlet UITextView *historyOfSetGame;
+@property (strong, nonatomic) NSString *textOfMatchMove;
+@property (strong, nonatomic) NSString *textOfSetMove;
 
 @end
 

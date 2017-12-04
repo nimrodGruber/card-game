@@ -108,34 +108,6 @@ static const int kThreeMatchBonus = 10;
   return @[@"♠️", @"♣️", @"♥️", @"♦️"];
 }
 
-//- (int)match:(NSMutableArray *)otherCards matchMethod:(NSUInteger)matchMethod {
-//  int score = 0;
-//  int matchCount =0;
-//
-//  for (NSUInteger j = 0; j < otherCards.count; ++j) {
-//    CGPlayingCard *card = [otherCards objectAtIndex:j];
-//
-//    for (NSUInteger i = 1 + j; i < otherCards.count; ++i) {
-//      CGPlayingCard *otherCard = [otherCards objectAtIndex:i];
-//
-//      if (card.rank == otherCard.rank) {
-//        score += kRankMatchScore;
-//        matchCount += 1;
-//      } else if ([card.suit isEqualToString:otherCard.suit]) {
-//        score += kSuitMatchScore;
-//        matchCount += 1;
-//      }
-//    }
-//  }
-//
-//  if (matchMethod == kThreeCardMatchSystem) {
-//    [self calculateThreeCardScore:matchCount score:&score];
-//  }
-//
-//  return score;
-//}
-
-
 @end
 
 NS_ASSUME_NONNULL_END

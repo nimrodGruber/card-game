@@ -38,6 +38,7 @@ static const int kCostToChoose = 1;
   return self;
 }
 
+//same as match game - should it be in parent class?
 - (CGCard *)cardAtIndex:(NSUInteger)index {
   return (index <= self.cards.count) ? self.cards[index] : nil;
 }
@@ -75,7 +76,7 @@ static const int kCostToChoose = 1;
   }
 }
 
-//same as set game
+//same as match game - should it be in parent class?
 - (void)flipAndClearPickedCardsIfNeeded:(CGCard *)card {
   if (self.pickedCards.count == self.matchMode) {
     if ([self.pickedCards firstObject].matched == NO) {
@@ -85,7 +86,7 @@ static const int kCostToChoose = 1;
   }
 }
 
-//same as set game
+//same as match game - should it be in parent class?
 - (void)markCardsChosenSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.chosen = sign;
@@ -94,7 +95,7 @@ static const int kCostToChoose = 1;
   card.chosen = sign;
 }
 
-//same as set game
+//same as match game - should it be in parent class?
 - (void)markCardsMatchedSign:(CGCard *)card cards:(NSMutableArray *)cards sign:(BOOL)sign {
   for (CGCard *picked in cards) {
     picked.matched = sign;

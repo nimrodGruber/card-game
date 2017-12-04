@@ -9,9 +9,6 @@
 #import "CGCardGame.h"
 #import "ViewController.h"
 
-//#import "CGCardMatchingGame.h"
-//#import "CGPlayingCardDeck.h"
-
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
