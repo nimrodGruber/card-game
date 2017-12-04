@@ -5,6 +5,7 @@
 #import "CGSetDeck.h"
 #import "CGSetGame.h"
 #import "SetCardsViewController.h"
+#import "HistoryViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
   }
   
   self.logLable.text = log;
+//  [self prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender]
 }
   
 //
@@ -213,6 +215,15 @@ NS_ASSUME_NONNULL_BEGIN
       [title setAttributes:@{ NSForegroundColorAttributeName : [self findCardColor:card],
                               NSBackgroundColorAttributeName : [[UIColor purpleColor] colorWithAlphaComponent:0.2] }
                      range:NSMakeRange(0, [title length])];
+    }
+  }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
+  if ([segue.identifier isEqualToString:@"History"]) {
+    if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
+      HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
+      [history.historyText appendString:self.logLable.text];
     }
   }
 }

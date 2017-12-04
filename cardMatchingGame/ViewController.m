@@ -6,11 +6,11 @@
 //  Copyright © 2017 Lightricks. All rights reserved.
 //
 
-#import "CGCardMatchingGame.h"
 #import "CGCardGame.h"
-//#import "CGPlayingCardDeck.h"
-
 #import "ViewController.h"
+
+//#import "CGCardMatchingGame.h"
+//#import "CGPlayingCardDeck.h"
 
 @interface ViewController ()
 
@@ -52,16 +52,7 @@
   [self updateUI];
 }
 
-- (void) updateUI { //this should be Abstracted here and implemented in child classes
-  for (UIButton *cardButton in self.cardButtons) {
-    NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
-    CGCard *card = [self.game cardAtIndex:cardButtonIndex];
-    [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-    [cardButton setBackgroundImage:[self backGroundImageForCard:card] forState:UIControlStateNormal];
-    cardButton.enabled = !card.matched;
-    self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
-    self.logLable.text = self.game.log;
-  }
+- (void) updateUI { // Abstract.
 }
 
 - (IBAction)methodPicking:(UISegmentedControl __unused *)sender {

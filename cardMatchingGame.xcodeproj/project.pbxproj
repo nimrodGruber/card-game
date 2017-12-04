@@ -27,6 +27,7 @@
 		F78B2C9D1FC3057F00D277B0 /* CGPlayingCardDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2C9C1FC3057F00D277B0 /* CGPlayingCardDeck.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2CA11FC4610500D277B0 /* CGCardMatchingGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = F78B2CA01FC4610500D277B0 /* CGCardMatchingGame.mm */; settings = {COMPILER_FLAGS = "-Wall -Wextra"; }; };
 		F78B2CA71FC492CA00D277B0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F78B2CA61FC492CA00D277B0 /* Default-568h@2x.png */; };
+		F7FBBA491FD553DB00E29D7F /* HistoryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7FBBA471FD553DB00E29D7F /* HistoryViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		F78B2C9F1FC4610500D277B0 /* CGCardMatchingGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGCardMatchingGame.h; sourceTree = "<group>"; };
 		F78B2CA01FC4610500D277B0 /* CGCardMatchingGame.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CGCardMatchingGame.mm; sourceTree = "<group>"; };
 		F78B2CA61FC492CA00D277B0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F7FBBA471FD553DB00E29D7F /* HistoryViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HistoryViewController.mm; sourceTree = "<group>"; };
+		F7FBBA481FD553DB00E29D7F /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 				F76A87561FCE87FD00B15818 /* MatchingCardsViewController.mm */,
 				F76A875A1FCE95C000B15818 /* SetCardsViewController.h */,
 				F76A87591FCE95C000B15818 /* SetCardsViewController.mm */,
+				F7FBBA481FD553DB00E29D7F /* HistoryViewController.h */,
+				F7FBBA471FD553DB00E29D7F /* HistoryViewController.mm */,
 				F71FB3871FC1C71F009C7874 /* Main.storyboard */,
 				F71FB38F1FC1C71F009C7874 /* Info.plist */,
 				F71FB38A1FC1C71F009C7874 /* Assets.xcassets */,
@@ -358,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FBBA491FD553DB00E29D7F /* HistoryViewController.mm in Sources */,
 				F78B2C9A1FC2FA4B00D277B0 /* CGPlayingCard.mm in Sources */,
 				F76A876A1FCFD47C00B15818 /* CGCardGame.mm in Sources */,
 				F71FB3861FC1C71F009C7874 /* ViewController.m in Sources */,
