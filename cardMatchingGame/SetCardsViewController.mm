@@ -44,20 +44,109 @@ NS_ASSUME_NONNULL_BEGIN
   [self updateUI];
 }
 
-- (void) updateUI {
+- (void)updateUI {
   for (UIButton *cardButton in self.cardButtons) {
     NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
     CGCard *card = [self.game cardAtIndex:cardButtonIndex];
-    
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
     [self extractCardAttributedTitle:card title:title];
-    
     [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-    [cardButton setBackgroundImage:[self backGroundImageForCard:card] forState:UIControlStateNormal];
+    [cardButton setBackgroundImage:[self backGroundImageForCard:card]forState:UIControlStateNormal];
     cardButton.enabled = !card.matched;
+    
     self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
-    self.logLable.text = self.game.log;
+    
+    [self logUpdateInTheUI];
   }
+}
+
+- (void)logUpdateInTheUI {
+  NSMutableString *log = [[NSMutableString alloc] init];
+  for (CGCard *card in self.game.pickedCards) {
+    [log appendString:[self cardToText:card]];
+  }
+  
+  if ([self.game.pickedCards count] == self.game.matchMode) {
+    if ([self.game.pickedCards firstObject].matched) {
+      [log appendString:@" matched for 15 points !"];
+    } else {
+      [log appendString:@" mismatch penalty -2 points !"];
+    }
+  }
+  
+  self.logLable.text = log;
+}
+  
+//
+//  NSString *redText = @"red text";
+//  NSString *greenText = @"green text";
+//  NSString *purpleBoldText = @"purple bold text";
+//
+//  NSString *text = [NSString stringWithFormat:@"Here are %@, %@ and %@",
+//                    redText,
+//                    greenText,
+//                    purpleBoldText];
+//
+//  // If attributed text is supported (iOS6+)
+//  if ([self.label respondsToSelector:@selector(setAttributedText:)]) {
+//
+//    // Define general attributes for the entire text
+//    NSDictionary *attribs = @{
+//                              NSForegroundColorAttributeName: self.label.textColor,
+//                              NSFontAttributeName: self.label.font
+//                              };
+//    NSMutableAttributedString *attributedText =
+//    [[NSMutableAttributedString alloc] initWithString:text
+//                                           attributes:attribs];
+//
+//    // Red text attributes
+//    UIColor *redColor = [UIColor redColor];
+//    NSRange redTextRange = [text rangeOfString:redText];// * Notice that usage of rangeOfString in this case may cause some bugs - I use it here only for demonstration
+//    [attributedText setAttributes:@{NSForegroundColorAttributeName:redColor}
+//                            range:redTextRange];
+//
+//    // Green text attributes
+//    UIColor *greenColor = [UIColor greenColor];
+//    NSRange greenTextRange = [text rangeOfString:greenText];// * Notice that usage of rangeOfString in this case may cause some bugs - I use it here only for demonstration
+//    [attributedText setAttributes:@{NSForegroundColorAttributeName:greenColor}
+//                            range:greenTextRange];
+//
+//    // Purple and bold text attributes
+//    UIColor *purpleColor = [UIColor purpleColor];
+//    UIFont *boldFont = [UIFont boldSystemFontOfSize:self.label.font.pointSize];
+//    NSRange purpleBoldTextRange = [text rangeOfString:purpleBoldText];// * Notice that usage of rangeOfString in this case may cause some bugs - I use it here only for demonstration
+//    [attributedText setAttributes:@{NSForegroundColorAttributeName:purpleColor,
+//                                    NSFontAttributeName:boldFont}
+//                            range:purpleBoldTextRange];
+//
+//    self.label.attributedText = attributedText;
+//  }
+//  // If attributed text is NOT supported (iOS5-)
+//  else {
+//    self.label.text = text;
+//  }
+
+- (NSMutableString *)cardToText: (CGCard*)card {
+  CGSetCard *setCard = (CGSetCard *)card;
+  NSMutableString *textCard = [[NSMutableString alloc] init];
+  
+  if (setCard.number == 1) {
+    [textCard appendString:@"1"];
+  } else if (setCard.number == 2) {
+    [textCard appendString:@"2"];
+  } else { // (setCard.number == 3)
+    [textCard appendString:@"3"];
+  }
+  
+  if (setCard.symbol == triangle) {
+    [textCard appendString:@"▲"];
+  } else if (setCard.symbol == circle) {
+    [textCard appendString:@"●"];
+  } else { // (setCard.symbol == square)
+    [textCard appendString:@"■"];
+  }
+  
+  return textCard;
 }
 
 - (ShadeType)findCardShade:(CGCard *)card {
@@ -83,12 +172,12 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
- - (int)findCardNumber:(CGCard *)card {
+- (int)findCardNumber:(CGCard *)card {
    CGSetCard *setCard = (CGSetCard *)card;
    return setCard.number;
  }
 
- - (NSString *)findCardSymbol:(CGCard *)card {
+- (NSString *)findCardSymbol:(CGCard *)card {
    CGSetCard *setCard = (CGSetCard *)card;
 
    if (setCard.symbol == triangle) {
@@ -100,7 +189,7 @@ NS_ASSUME_NONNULL_BEGIN
    }
  }
 
--(void)extractCardAttributedTitle:(CGCard *)card title:(NSMutableAttributedString *)title {
+- (void)extractCardAttributedTitle:(CGCard *)card title:(NSMutableAttributedString *)title {
   [title appendAttributedString:[[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%d%@",[self findCardNumber:card], [self findCardSymbol:card]]]];
 
   if ([self findCardShade:card] == opened) {

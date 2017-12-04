@@ -54,7 +54,7 @@
   [self updateUI];
 }
 
-- (void) updateUI {
+- (void) updateUI { //this should be Abstracted here and implemented in child classes
   for (UIButton *cardButton in self.cardButtons) {
     NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
     CGCard *card = [self.game cardAtIndex:cardButtonIndex];

@@ -40,10 +40,10 @@ static const int kMaxNumberAttributes = 4;
 
 - (int)matchThreeCards:(NSMutableArray *)otherCards {
   BOOL cardsAreLegalSet = NO;
-  
   CGSetCard *first = [otherCards firstObject];
   CGSetCard *second = [otherCards lastObject];
   NSMutableArray *cards = [[NSMutableArray alloc] init];
+  
   [cards addObject:first];
   [cards addObject:second];
   [cards addObject:self];
