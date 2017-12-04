@@ -50,10 +50,12 @@ static const int kMaxLogLength = 6; //  ==> card.contents.length * 3.
       
         if (matchScore) {
           self.score += matchScore * kMatchBonus;
+          self.lastMatchScoring = matchScore * kMatchBonus;
           [self logPresentMatchScore:card points:(matchScore * kMatchBonus) success:YES];
           [self markCardsMatchedSign:card cards:self.pickedCards sign:YES];
         } else {
           self.score -= kMismatchPenalty;
+          self.lastMatchScoring = kMismatchPenalty;
           [self logPresentMatchScore:card points:(kMismatchPenalty + kCostToChoose) success:NO];
         }
       }

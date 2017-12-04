@@ -68,9 +68,9 @@ NS_ASSUME_NONNULL_BEGIN
   
   if ([self.game.pickedCards count] == self.game.matchMode) {
     if ([self.game.pickedCards firstObject].matched) {
-      [log appendString:@" matched for 15 points !"];
+      [log appendString:[[NSString alloc] initWithFormat:@" matched for %d points !", self.game.lastMatchScoring]];
     } else {
-      [log appendString:@" mismatch penalty -2 points !"];
+      [log appendString:[[NSString alloc] initWithFormat:@" mismatch penalty %d points !", self.game.lastMatchScoring]];
     }
   }
   

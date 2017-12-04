@@ -23,7 +23,6 @@ static const int kCostToChoose = 1;
 - (nullable instancetype)initWithCardCount:(NSUInteger)count usingDeck:(CGDeck *)deck {
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
-    self.log = [[NSMutableString alloc] init];
     self.matchMode = 3; //in set game matchMode is always 3
     for (NSUInteger i = 0; i < count; ++i) {
       CGCard *card = [deck drawRandomCard];
@@ -53,10 +52,7 @@ static const int kCostToChoose = 1;
   } else if (card.chosen) {
     card.chosen = NO;
     [self.pickedCards removeObject:card];
-//    [self logRemoveUnchosenCard:card];
   } else {
-    [self logAddChosenCard:card];
-    
     card.chosen = YES;
     
     if (self.pickedCards.count == self.matchMode - 1) {
@@ -65,11 +61,11 @@ static const int kCostToChoose = 1;
       
       if (matchScore) {
         self.score += matchScore * kMatchBonus;
-        [self logPresentMatchScore:card points:(matchScore * kMatchBonus) success:YES];
+        self.lastMatchScoring = matchScore * kMatchBonus;
         [self markCardsMatchedSign:card cards:self.pickedCards sign:YES];
       } else {
         self.score -= kMismatchPenalty;
-        [self logPresentMatchScore:card points:(kMismatchPenalty + kCostToChoose) success:NO];
+        self.lastMatchScoring = kMismatchPenalty;
       }
     }
     
@@ -105,47 +101,6 @@ static const int kCostToChoose = 1;
   }
   
   card.matched = sign;
-}
-
-- (void)logRemoveUnchosenCard:(CGCard *)card {
-//  NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-//  [self extractCardAttributedTitle:card title:title];
-  
-  NSRange cardRange = [self.log rangeOfString:card.contents];
-  [self.log deleteCharactersInRange:cardRange];
-}
-
-- (void)logAddChosenCard:(CGCard *)card {
-  if (self.log.length > 6) {
-    [self.log setString: @""];
-  }
-//  NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-//  [self extractCardAttributedTitle:card title:title];
-//
-//  [self.log appendString:[NSString stringWithFormat:@"%@", title]];
-//  [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
-}
-
-- (void)logPresentMatchScore:(CGCard *)card points:(NSUInteger)points success:(BOOL)success {
-  [self.log setString: @""];
-  
-//  NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-//  for (CGCard *pCard in self.pickedCards) {
-//    [self extractCardAttributedTitle:pCard title:title];
-//
-//    [self.log appendString:[NSString stringWithFormat:@"%@", title]];
-    //[self.log appendString:[NSString stringWithFormat:@"%@", pCard.contents]];
-//  }
-  
-//  [self extractCardAttributedTitle:card title:title];
-//  [self.log appendString:[NSString stringWithFormat:@"%@", title]];
- // [self.log appendString:[NSString stringWithFormat:@"%@", card.contents]];
-  
-  if (success) {
-    [self.log appendString:[NSString stringWithFormat:@" matched for %lu points", (unsigned long)points]];
-  } else {
-    [self.log appendString:[NSString stringWithFormat:@" wrong match %lu penalty", (unsigned long)points]];
-  }
 }
 
 @end
