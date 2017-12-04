@@ -58,20 +58,28 @@ static const int kMaxNumberAttributes = 4;
   return cardsAreLegalSet;
 }
 
-//- (BOOL)allCardsAreEqual:(NSMutableArray *)cards withFeature:(enum)featue {
-//
-//}
+-(BOOL)areAllIntsEqual:(int)first second:(int)second third:(int)third {
+  if ((first == second) && (first == third)) {
+    return YES;
+  } else {
+    return NO;
+  }
+}
+
+-(BOOL)areAllIntsDifferent:(int)first second:(int)second third:(int)third {
+  if ((first != second) && (first != third) && (second != third)) {
+    return YES;
+  } else {
+    return NO;
+  }
+}
 
 - (BOOL)allNumbersAreEqual:(NSMutableArray *)cards {
   CGSetCard *first = [cards objectAtIndex:0];
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.number == second.number) && (first.number == third.number)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsEqual:first.number second:second.number third:third.number];
 }
 
 - (BOOL)allNumbersAreDifferent:(NSMutableArray *)cards {
@@ -79,11 +87,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.number != second.number) && (first.number != third.number) && (second.number != third.number)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsDifferent:first.number second:second.number third:third.number];
 }
 
 - (BOOL)allSymbolAreEqual:(NSMutableArray *)cards {
@@ -91,11 +95,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.symbol == second.symbol) && (first.symbol == third.symbol)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsEqual:first.symbol second:second.symbol third:third.symbol];
 }
 
 - (BOOL)allSymbolAreDifferent:(NSMutableArray *)cards {
@@ -103,11 +103,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.symbol != second.symbol) && (first.symbol != third.symbol) && (second.symbol != third.symbol)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsDifferent:first.symbol second:second.symbol third:third.symbol];
 }
 
 - (BOOL)allShadingAreEqual:(NSMutableArray *)cards {
@@ -115,11 +111,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.shading == second.shading) && (first.shading == third.shading)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsEqual:first.shading second:second.shading third:third.shading];
 }
 
 - (BOOL)allShadingAreDifferent:(NSMutableArray *)cards {
@@ -127,11 +119,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.shading != second.shading) && (first.shading != third.shading) && (second.shading != third.shading)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsDifferent:first.shading second:second.shading third:third.shading];
 }
 
 - (BOOL)allColorsAreEqual:(NSMutableArray *)cards {
@@ -139,11 +127,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.color == second.color) && (first.color == third.color)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsEqual:first.color second:second.color third:third.color];
 }
 
 - (BOOL)allColorsAreDifferent:(NSMutableArray *)cards {
@@ -151,11 +135,7 @@ static const int kMaxNumberAttributes = 4;
   CGSetCard *second = [cards objectAtIndex:1];
   CGSetCard *third = [cards objectAtIndex:2];
   
-  if ((first.color != second.color) && (first.color != third.color) && (second.color != third.color)) {
-    return YES;
-  } else {
-    return NO;
-  }
+  return [self areAllIntsDifferent:first.color second:second.color third:third.color];
 }
 
 - (ColorType)color {
