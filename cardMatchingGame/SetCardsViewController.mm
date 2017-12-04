@@ -219,7 +219,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
-  if ([segue.identifier isEqualToString:@"toHistory"]) {
+  if ([segue.identifier isEqualToString:@"setToHistory"]) {
     if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
       HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
       history.textOfSetMove = self.logLable.text;
