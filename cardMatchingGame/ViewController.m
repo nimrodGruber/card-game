@@ -49,7 +49,7 @@
   [self updateUI];
 }
 
-- (void) updateUI { // Abstract.
+- (void)updateUI { // Abstract.
 }
 
 - (IBAction)methodPicking:(UISegmentedControl __unused *)sender {

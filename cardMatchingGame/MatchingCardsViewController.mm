@@ -68,6 +68,16 @@ NS_ASSUME_NONNULL_BEGIN
   self.logLable.text = log;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
+  if ([segue.identifier isEqualToString:@"matchGameToHistory"]) {
+    if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
+      HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
+      [history updateHistory:self.game.history.logMatchGame];
+//      history.logMatchGame = self.game.history.logMatchGame;
+    }
+  }
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

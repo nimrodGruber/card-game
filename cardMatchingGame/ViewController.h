@@ -20,7 +20,7 @@
 
 - (UIImage *)backGroundImageForCard:(CGCard *)card; // Abstract.
 
-- (void) updateUI; // Abstract.
+- (void)updateUI; // Abstract.
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
 

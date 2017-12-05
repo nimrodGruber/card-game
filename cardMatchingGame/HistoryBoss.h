@@ -7,8 +7,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryBoss : NSObject
 
-@property (strong, nonatomic) NSMutableArray <NSMutableString *> *logMatchGame;
-@property (strong, nonatomic) NSMutableArray <NSMutableString *> *logSetGame;
+@property (strong, nonatomic) NSMutableArray <NSString *> *logMatchGame;
+@property (strong, nonatomic) NSMutableArray <NSString *> *logSetGame;
 
 @end
 
