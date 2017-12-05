@@ -7,9 +7,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController ()
 
-@property (strong, nonatomic) NSMutableArray *logMatchGame;
-@property (strong, nonatomic) NSMutableArray *logSetGame;
-
 @end
 
 @implementation HistoryViewController
@@ -22,17 +19,35 @@ NS_ASSUME_NONNULL_BEGIN
 //  }
 //}
 
-- (void)setTextOfSetMove:(NSMutableString *)textOfSetMove {
-  _textOfSetMove = textOfSetMove;
-  [self.logSetGame addObject:textOfSetMove];
-  NSLog(@"@", self.logSetGame);
-//  NSLog(@"%ld", self.game.matchMode);
+- (void)setLogSetGame:(NSMutableArray<NSMutableString *> *)logSetGame {
+  _logSetGame = logSetGame;
+//  for (int i = 0; i < logSetGame.count; ++i) {
+//    self.historyOfSetGame.text = [self.historyOfSetGame.text stringByAppendingString:self.logSetGame[i]];
+//  }
+//  [self.logSetGame addObject:textOfSetMove];
+  //  NSLog(@"%ld", self.game.matchMode);
   [self updateSetHistory];
   
-//  if (self.view.window) {
-//    [self updateSetHistory];
-//  }
+  //  if (self.view.window) {
+  //    [self updateSetHistory];
+  //  }
 }
+
+
+
+//- (void)setTextOfSetMove:(NSMutableString *)textOfSetMove {
+//  _textOfSetMove = textOfSetMove;
+//  if (!self.logSetGame) {
+//    self.logSetGame = [[NSMutableArray alloc] init];
+//  }
+//  [self.logSetGame addObject:textOfSetMove];
+////  NSLog(@"%ld", self.game.matchMode);
+//  [self updateSetHistory];
+//
+////  if (self.view.window) {
+////    [self updateSetHistory];
+////  }
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:YES];
@@ -41,16 +56,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  _logMatchGame = [[NSMutableArray alloc] init];
-  _logSetGame = [[NSMutableArray alloc] init];
+  if (!self.logSetGame) {
+    _logSetGame = [[NSMutableArray alloc] init];
+  }
+  if (!self.logMatchGame) {
+    _logMatchGame = [[NSMutableArray alloc] init];    
+  }
 }
 
 - (void)updateSetHistory {
-  self.historyOfSetGame = nil;
-  
-  for (int i = 0; i < [self.logSetGame count]; ++i) {
+  for (int i = 0; i < self.logSetGame.count; ++i) {
     self.historyOfSetGame.text = [self.historyOfSetGame.text stringByAppendingString:self.logSetGame[i]];
-    self.historyOfSetGame.text = [self.historyOfSetGame.text stringByAppendingString:@"/n"];
+    //self.historyOfSetGame.text = [self.historyOfSetGame.text stringByAppendingString:@""];
   }
 }
 

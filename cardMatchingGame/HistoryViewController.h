@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextView *historyOfSetGame;
 @property (strong, nonatomic) NSString *textOfMatchMove;
 @property (strong, nonatomic) NSString *textOfSetMove;
+@property (strong, nonatomic) NSMutableArray <NSMutableString *> *logMatchGame;
+@property (strong, nonatomic) NSMutableArray <NSMutableString *> *logSetGame;
 
 @end
 

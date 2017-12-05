@@ -4,8 +4,6 @@
 #import "CGSetGame.h"
 #import "CGSetCard.h"
 
-#import <UIKit/UIKit.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CGSetGame()

@@ -80,14 +80,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
-  int i = 5;
-//  if ([segue.identifier isEqualToString:@"toHistory"]) {
-//    if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
-//      HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
-//      history.textOfSetMove = self.logLable.text;
-//    }
-//  }
-}
-
 @end
