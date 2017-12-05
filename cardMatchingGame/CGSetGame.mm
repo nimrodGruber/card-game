@@ -108,7 +108,7 @@ static const int kCostToChoose = 1;
   card.matched = sign;
 }
 
-- (NSMutableString *)cardToText: (CGCard*)card { //this function appears again in set view controller
+- (NSString *)cardToText: (CGCard*)card { //this function appears again in set view controller
   CGSetCard *setCard = (CGSetCard *)card;
   NSMutableString *textCard = [[NSMutableString alloc] init];
   
@@ -132,12 +132,12 @@ static const int kCostToChoose = 1;
 }
 
 - (void)addHistoryOfMatch {
-  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" matched for %d points !", self.lastMatchScoring];;
+  NSString *result = [[NSString alloc] initWithFormat:@" matched for %d points !\n", self.lastMatchScoring];;
   [self.history.logSetGame addObject:result];
 }
 
 - (void)addHistoryOfMismatch {
-  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" mismatch penalty %d points !", self.lastMatchScoring];
+  NSString *result = [[NSString alloc] initWithFormat:@" mismatch penalty %d points !\n", self.lastMatchScoring];
   [self.history.logSetGame addObject:result];
 }
 

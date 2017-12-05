@@ -72,8 +72,8 @@ NS_ASSUME_NONNULL_BEGIN
   if ([segue.identifier isEqualToString:@"matchGameToHistory"]) {
     if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
       HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
-      [history updateHistory:self.game.history.logMatchGame];
-//      history.logMatchGame = self.game.history.logMatchGame;
+      //[history updateHistory:self.game.history.logMatchGame];
+      history.log = self.game.history.logMatchGame;
     }
   }
 }

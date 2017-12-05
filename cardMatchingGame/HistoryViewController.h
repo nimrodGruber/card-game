@@ -8,8 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HistoryViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *historyOfGame;
+@property (strong, nonatomic) NSMutableArray <NSString *> *log;
 
-- (void)updateHistory:(NSMutableArray <NSString *> *)log;
+//- (void)updateHistory:(NSMutableArray <NSString *> *)log;
 
 @end
 

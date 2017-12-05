@@ -115,13 +115,13 @@ static const int kCostToChoose = 1;
 }
 
 - (void)addHistoryOfMatch {
-  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" matched for %d points !", self.lastMatchScoring];;
-  [self.history.logSetGame addObject:result];
+  NSString *result = [[NSString alloc] initWithFormat:@" matched for %d points !\n", self.lastMatchScoring];;
+  [self.history.logMatchGame addObject:result];
 }
 
 - (void)addHistoryOfMismatch {
-  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" mismatch penalty %d points !", self.lastMatchScoring];
-  [self.history.logSetGame addObject:result];
+  NSString *result = [[NSString alloc] initWithFormat:@" mismatch penalty %d points !\n", self.lastMatchScoring];
+  [self.history.logMatchGame addObject:result];
 }
 
 @end
