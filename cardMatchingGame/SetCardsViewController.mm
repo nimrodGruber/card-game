@@ -5,7 +5,6 @@
 #import "CGSetDeck.h"
 #import "CGSetGame.h"
 #import "HistoryViewController.h"
-#import "HistoryBoss.h"
 #import "SetCardsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SetCardsViewController ()
 
 @property (strong, nonatomic) CGSetGame *game;
-@property (strong, nonatomic) HistoryBoss *history;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 @end
@@ -38,14 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
   }
 
   return _game;
-}
-
-- (HistoryBoss *)history {
-  if (!_history) {
-    _history = [[HistoryBoss alloc] init];
-  }
-  
-  return _history;
 }
 
 - (void)viewDidLoad {
@@ -75,19 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
   NSMutableString *log = [[NSMutableString alloc] init];
   for (CGCard *card in self.game.pickedCards) {
     [log appendString:[self cardToText:card]];
-    [self.history.logSetGame addObject:[self cardToText:card]];
   }
   
   if ([self.game.pickedCards count] == self.game.matchMode) {
     if ([self.game.pickedCards firstObject].matched) {
-      NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" matched for %d points !", self.game.lastMatchScoring];
-      [log appendString:[[NSString alloc] initWithFormat:result]];
-      //[log appendString:[[NSString alloc] initWithFormat:@" matched for %d points !", self.game.lastMatchScoring]];
-      [self.history.logSetGame addObject:result];
+      [log appendString:[[NSString alloc] initWithFormat:@" matched for %d points !", self.game.lastMatchScoring]];
     } else {
-      NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" mismatch penalty %d points !", self.game.lastMatchScoring];
-      [log appendString:[[NSString alloc] initWithFormat:result]];
-      [self.history.logSetGame addObject:result];
+      [log appendString:[[NSString alloc] initWithFormat:@" mismatch penalty %d points !", self.game.lastMatchScoring]];
     }
   }
   
@@ -189,7 +173,7 @@ NS_ASSUME_NONNULL_BEGIN
   if ([segue.identifier isEqualToString:@"setToHistory"]) {
     if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
       HistoryViewController *history = (HistoryViewController *) segue.destinationViewController;
-      history.logSetGame = self.history.logSetGame;
+      history.logSetGame = self.game.history.logSetGame;
     }
   }
 }

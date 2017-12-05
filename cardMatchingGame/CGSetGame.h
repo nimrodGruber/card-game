@@ -3,6 +3,7 @@
 
 #import "CGDeck.h"
 #import "CGCardGame.h"
+#import "HistoryBoss.h"
 
 #import <Foundation/Foundation.h>
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGCard *)cardAtIndex:(NSUInteger)index;
 - (void)chooseCardAtIndex:(NSUInteger)index;
+
+@property (strong, nonatomic) HistoryBoss *history;
 
 @end
 

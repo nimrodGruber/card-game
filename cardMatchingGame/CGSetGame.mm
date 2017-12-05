@@ -4,6 +4,7 @@
 #import "CGSetGame.h"
 #import "CGSetCard.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CGSetGame()
@@ -21,6 +22,7 @@ static const int kCostToChoose = 1;
 - (nullable instancetype)initWithCardCount:(NSUInteger)count usingDeck:(CGDeck *)deck {
   if (self = [super init]) {
     _cards = [[NSMutableArray<CGCard *> alloc] init];
+    _history = [[HistoryBoss alloc] init];
     self.matchMode = 3; //in set game matchMode is always 3
     for (NSUInteger i = 0; i < count; ++i) {
       CGCard *card = [deck drawRandomCard];
@@ -51,8 +53,10 @@ static const int kCostToChoose = 1;
   } else if (card.chosen) {
     card.chosen = NO;
     [self.pickedCards removeObject:card];
+    [self.history.logSetGame removeLastObject];
   } else {
     card.chosen = YES;
+    [self.history.logSetGame addObject:[self cardToText:card]];
     
     if (self.pickedCards.count == self.matchMode - 1) {
       int matchScore = 0;
@@ -62,9 +66,11 @@ static const int kCostToChoose = 1;
         self.score += matchScore * kMatchBonus;
         self.lastMatchScoring = matchScore * kMatchBonus;
         [self markCardsMatchedSign:card cards:self.pickedCards sign:YES];
+        [self addHistoryOfMatch];
       } else {
         self.score -= kMismatchPenalty;
         self.lastMatchScoring = kMismatchPenalty;
+        [self addHistoryOfMismatch];
       }
     }
     
@@ -100,6 +106,39 @@ static const int kCostToChoose = 1;
   }
   
   card.matched = sign;
+}
+
+- (NSMutableString *)cardToText: (CGCard*)card { //this function appears again in set view controller
+  CGSetCard *setCard = (CGSetCard *)card;
+  NSMutableString *textCard = [[NSMutableString alloc] init];
+  
+  if (setCard.number == 1) {
+    [textCard appendString:@"1"];
+  } else if (setCard.number == 2) {
+    [textCard appendString:@"2"];
+  } else { // (setCard.number == 3)
+    [textCard appendString:@"3"];
+  }
+  
+  if (setCard.symbol == triangle) {
+    [textCard appendString:@"▲"];
+  } else if (setCard.symbol == circle) {
+    [textCard appendString:@"●"];
+  } else { // (setCard.symbol == square)
+    [textCard appendString:@"■"];
+  }
+  
+  return textCard;
+}
+
+- (void)addHistoryOfMatch {
+  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" matched for %d points !", self.lastMatchScoring];;
+  [self.history.logSetGame addObject:result];
+}
+
+- (void)addHistoryOfMismatch {
+  NSMutableString *result = [[NSMutableString alloc] initWithFormat:@" mismatch penalty %d points !", self.lastMatchScoring];
+  [self.history.logSetGame addObject:result];
 }
 
 @end
